@@ -18,6 +18,13 @@ const userSlice = createSlice({
 
   initialState,
 
+  reducers: {
+    searchOneUser: (state, action) => {
+      console.log(action.payload);
+      state.userData = action.payload;
+    },
+  },
+
   extraReducers: (builder) => {
     builder.addCase(fetchUSers.pending, (state) => {
       state.isLoading = true;
@@ -36,4 +43,5 @@ const userSlice = createSlice({
   },
 });
 
+export const { searchOneUser } = userSlice.actions;
 export default userSlice.reducer;

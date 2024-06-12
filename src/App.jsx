@@ -8,10 +8,15 @@ import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import MyButton from "../Components/MyButton";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchUSers, searchOneUser } from "../redux/slices/UsersSlice";
 
 const App = () => {
-  const [userData, setUserData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [userData, setUserData] = useState([]);
+  const userData = useSelector((state) => state.users.userData);
+  const isLoading = useSelector((state) => state.users.isLoading);
+  const dispatch = useDispatch();
+  // const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [show, setShow] = useState(false);
   const [detailUser, setDetailUser] = useState({});
@@ -27,17 +32,18 @@ const App = () => {
   async function searchUser(event) {
     try {
       if (event.target.value.trim() == "") {
-        const users = await axios.get("https://node5.onrender.com/user/user");
-        setUserData(users.data.data);
+        // const users = await axios.get("https://node5.onrender.com/user/user");
+        dispatch(fetchUSers());
         return;
       }
-      ``;
+
       const res = await axios.get("https://node5.onrender.com/user/filter", {
         params: {
           name: event.target.value,
         },
       });
-      setUserData(res.data.data);
+      // setUserData(res.data.data);
+      dispatch(searchOneUser(res.data.data));
 
       console.log(res);
     } catch (error) {
@@ -45,24 +51,24 @@ const App = () => {
     }
   }
 
-  async function getUserData() {
-    setIsLoading(true);
+  // async function getUserData() {
+  //   setIsLoading(true);
 
-    try {
-      const users = await axios.get("https://node5.onrender.com/user/user");
+  //   try {
+  //     const users = await axios.get("https://node5.onrender.com/user/user");
 
-      if (users.status === 404) {
-        setUserData([]);
-      }
+  //     if (users.status === 404) {
+  //       setUserData([]);
+  //     }
 
-      setUserData(users?.data?.data);
-    } catch (error) {
-      console.log("Error in getting data= " + error);
-    } finally {
-      setIsLoading(false);
-      setIsDeleting(false);
-    }
-  }
+  //     setUserData(users?.data?.data);
+  //   } catch (error) {
+  //     console.log("Error in getting data= " + error);
+  //   } finally {
+  //     setIsLoading(false);
+  //     setIsDeleting(false);
+  //   }
+  // }
 
   const deleteUser = async function (id, userName) {
     setIsDeleting(true);
@@ -91,7 +97,8 @@ const App = () => {
 
         console.log("val of del=" + isDeleting);
 
-        getUserData();
+        // getUserData();
+        dispatch(fetchUSers());
       } else {
         toast.update(toastId, {
           render: `Something went wrong!`,
@@ -110,7 +117,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    getUserData();
+    // getUserData();
+    dispatch(fetchUSers());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -123,11 +132,6 @@ const App = () => {
         <>
           <div className="search-bar">
             <div className="group">
-              <svg className="icon" aria-hidden="true" viewBox="0 0 24 24">
-                <g>
-                  <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z" />
-                </g>
-              </svg>
               <input
                 onChange={(event) => {
                   searchUser(event);
