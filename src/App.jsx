@@ -94,7 +94,7 @@ const App = () => {
         getUserData();
       } else {
         toast.update(toastId, {
-          render: `Something went wrong`,
+          render: `Something went wrong!`,
           type: "error",
           isLoading: false,
           abc: 123,
