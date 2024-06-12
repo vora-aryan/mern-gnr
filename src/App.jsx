@@ -97,6 +97,7 @@ const App = () => {
           render: `Something went wrong`,
           type: "error",
           isLoading: false,
+          abc: 123,
         });
       }
     } catch (error) {
