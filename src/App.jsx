@@ -214,22 +214,7 @@ const App = () => {
                           </p>
                         )}
                       </td>
-                      {/* <td scope="col">
-                        <MyButton
-                          text={"Hello"}
-                          type="danger"
-                          onClickEvent={() =>
-                            navigate("/updateuser/" + user._id)
-                          }
-                        />
-                      </td> */}
                       <td scope="col">
-                        {/* <button
-                          onClick={() => navigate("/updateuser/" + user._id)}
-                          className="btn btn-primary"
-                        >
-                          Update
-                        </button> */}
                         <MyButton
                           text="Update"
                           type="warning"
@@ -239,12 +224,6 @@ const App = () => {
                         />
                       </td>
                       <td scope="col">
-                        {/* <button
-                          onClick={() => deleteUser(user._id, user?.name)}
-                          className="btn btn-danger"
-                        >
-                          Delete
-                        </button> */}
                         <MyButton
                           text="Delete"
                           type="danger"
@@ -252,15 +231,6 @@ const App = () => {
                         />
                       </td>
                       <td scope="col">
-                        {/* <Button
-                          variant="primary"
-                          onClick={() => {
-                            handleShow();
-                            handleDetailUser(user);
-                          }}
-                        >
-                          Show Details
-                        </Button> */}
                         <MyButton
                           text="Show Details"
                           type="primary"
@@ -273,7 +243,6 @@ const App = () => {
                     </tr>
                   ))
                 )}
-                {/* {} */}
               </tbody>
             </table>
           </div>
