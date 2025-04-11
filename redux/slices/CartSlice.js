@@ -3,31 +3,22 @@ import axios from "axios";
 
 const initialState = {
   cart: [],
-  // isLoading: false,
-  // todoData: [],
-  // isError: false,
 };
-
-// export const fetchData = createAsyncThunk("fetchTodos", async () => {
-//   try {
-//     const res = await axios.get("https://jsonplaceholder.typicode.com/todos");
-//     return res.data;
-//   } catch (error) {
-//     console.log("error=", error);
-//   }
-// });
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addItem: (state, action) => {
-      state.cart = [
-        ...state.cart,
-        { ...action.payload, id: crypto.randomUUID() },
-      ];
-      // const newItem = { ...action.payload, id: crypto.randomUUID() };
-      // state.cart.push(newItem);
+      // state.cart = [
+      //   ...state.cart,
+      //   { ...action.payload, id: crypto.randomUUID() },
+      // ];
+
+      console.log(action);
+
+      const newItem = { ...action.payload, id: crypto.randomUUID() };
+      state.cart.push(newItem);
 
       // console.log("state = ", state);
       // console.log("action payload = ", action.payload);

@@ -18,20 +18,20 @@ export const Routing = () => {
     <div>
       <ThemeContextProvider>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<App />}></Route>
-          <Route element={<ProtectedRoutes />}>
-            <Route path="/login" element={<LoginPage />}></Route>
-            <Route path="/adduser" element={<AddUserForm />}></Route>
-            <Route path="/updateuser/:id" element={<UpdateUser />}></Route>
-          </Route>
-          <Route path="/products" element={<ProductPage />}></Route>
-          <Route path="/tasks" element={<Tasks />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
-          <Route path="/bank" element={<BankPage />}></Route>
-          <Route path="/mui" element={<MUI />}></Route>
-        </Routes>
       </ThemeContextProvider>
+      <Routes>
+        <Route path="/" element={<App />}></Route>
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/adduser" element={<AddUserForm />}></Route>
+          <Route path="/updateuser/:id" element={<UpdateUser />}></Route>
+        </Route>
+        <Route path="/products" element={<ProductPage />}></Route>
+        <Route path="/tasks" element={<Tasks />}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
+        <Route path="/bank" element={<BankPage />}></Route>
+        <Route path="/mui" element={<MUI />}></Route>
+      </Routes>
     </div>
   );
 };
