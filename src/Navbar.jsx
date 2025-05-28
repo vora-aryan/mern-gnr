@@ -1,10 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
 import { ThemeContext } from "../Context/ThemeContextProvider";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const Navbar = () => {
   const { darkTheme, toggleTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    console.log("Navbar Mounted");
+  }, []);
 
   const navigate = useNavigate();
   const logOut = () => {
