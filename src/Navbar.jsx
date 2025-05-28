@@ -7,7 +7,7 @@ const Navbar = () => {
   const { darkTheme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
-    console.log("Navbar Mounted");
+    console.log("Navbar Not Mounted");
   }, []);
 
   const navigate = useNavigate();
